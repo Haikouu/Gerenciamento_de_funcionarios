@@ -1,5 +1,5 @@
 import sistemas.sistema as sistema
-from classe.funcionarios import clt, freelancer, estagiario
+from classe.funcionarios import Clt, Freelancer, Estagiario
 
 def exibir_menu():
     
@@ -11,6 +11,7 @@ def exibir_menu():
         print("2 - Listar Funcionários")
         print("3 - Mostrar Salário de Todos")
         print("4 - Mostrar Folha Salarial Total")
+        print("5 - Excluir Funcionário")
         print("0 - Sair")
         print("="*35)
 
@@ -31,19 +32,19 @@ def exibir_menu():
             if tipo == "1":
                 salario = float(input("Salário Base: R$ "))
                 bonus = float(input("Bônus: R$ "))
-                novo = clt(nome, cpf, salario, bonus)
+                novo = Clt(nome, cpf, salario, bonus)
                 categoria = "CLT"
 
             elif tipo == "2":
                 valor_proj = float(input("Valor por Projeto: R$ "))
                 qtd_proj = int(input("Quantidade de Projetos: "))
-                novo = freelancer(nome, cpf, valor_proj, qtd_proj)
+                novo = Freelancer(nome, cpf, valor_proj, qtd_proj)
                 categoria = "Freelancer"
 
             elif tipo == "3":
                 bolsa = float(input("Valor da Bolsa: R$ "))
                 desconto = float(input("Valor do Desconto: R$ "))
-                novo = estagiario(nome, cpf, bolsa, desconto)
+                novo = Estagiario(nome, cpf, bolsa, desconto)
                 categoria = "Estagiário"
 
             else:
@@ -54,12 +55,21 @@ def exibir_menu():
 
         elif opcao == "2":
             sistema.listar_funcionarios()
+            input("\n[Pressione ENTER para voltar ao menu...]")
 
         elif opcao == "3":
             sistema.calcular_salario_todos()
+            input("\n[Pressione ENTER para voltar ao menu...]")
 
         elif opcao == "4":
             sistema.calcular_folha_salarial()
+            input("\n[Pressione ENTER para voltar ao menu...]")
+            
+        elif opcao == "5":
+            print("\n--- Excluir Funcionário ---")
+            cpf_alvo = input("Digite o CPF do funcionário que deseja excluir: ")
+            sistema.excluir_funcionario(cpf_alvo)
+            input("\n[Pressione ENTER para voltar ao menu...]")
 
         elif opcao == "0":
             print("\nEncerrando o sistema... Até mais!")

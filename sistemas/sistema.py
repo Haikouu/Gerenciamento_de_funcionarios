@@ -1,27 +1,27 @@
-from classe.funcionarios import clt, freelancer, estagiario
+from classe.funcionarios import Clt, Freelancer, Estagiario
 
 
 funcionarios = {
     "CLT": {
-        "101": clt("Ana Silva", "101", 3500.0, 500.0),
-        "102": clt("Bruno Souza", "102", 4000.0, 600.0),
-        "103": clt("Carla Dias", "103", 3200.0, 300.0),
-        "104": clt("Diego Lins", "104", 2800.0, 450.0),
-        "105": clt("Elena Vaz", "105", 5500.0, 1200.0),
+        # "101": Clt("Ana Silva", "101", 3500.0, 500.0),
+        # "102": Clt("Bruno Souza", "102", 4000.0, 600.0),
+        # "103": Clt("Carla Dias", "103", 3200.0, 300.0),
+        # "104": Clt("Diego Lins", "104", 2800.0, 450.0),
+        # "105": Clt("Elena Vaz", "105", 5500.0, 1200.0),
     },
     "Freelancer": {
-        "201": freelancer("Fabio Araujo", "201", 1200.0, 3),
-        "202": freelancer("Gisele Reis", "202", 1500.0, 2),
-        "203": freelancer("Helio Neto", "203", 900.0, 5),
-        "204": freelancer("Igor Gomes", "204", 2500.0, 1),
-        "205": freelancer("Julia Mello", "205", 1100.0, 4),
+        # "201": Freelancer("Fabio Araujo", "201", 1200.0, 3),
+        # "202": Freelancer("Gisele Reis", "202", 1500.0, 2),
+        # "203": Freelancer("Helio Neto", "203", 900.0, 5),
+        # "204": Freelancer("Igor Gomes", "204", 2500.0, 1),
+        # "205": Freelancer("Julia Mello", "205", 1100.0, 4),
     },
     "Estagiário": {
-        "301": estagiario("Kauan Lima", "301", 1200.0, 50.0),
-        "302": estagiario("Larissa Paz", "302", 1200.0, 0.0),
-        "303": estagiario("Moacyr Luz", "303", 1000.0, 25.0),
-        "304": estagiario("Nara Costa", "304", 1400.0, 80.0),
-        "305": estagiario("Otavio Pires", "305", 1150.0, 30.0),
+        # "301": Estagiario("Kauan Lima", "301", 1200.0, 50.0),
+        # "302": Estagiario("Larissa Paz", "302", 1200.0, 0.0),
+        # "303": Estagiario("Moacyr Luz", "303", 1000.0, 25.0),
+        # "304": Estagiario("Nara Costa", "304", 1400.0, 80.0),
+        # "305": Estagiario("Otavio Pires", "305", 1150.0, 30.0),
     }
 }
 
@@ -62,3 +62,13 @@ def calcular_folha_salarial():
             total_folha += grupo[cpf].calcular_salario()
 
     print(f"\nValor total da folha de pagamento: R$ {total_folha:.2f}")
+
+
+def excluir_funcionario(cpf):
+    for categoria, grupo in funcionarios.items():
+        if cpf in grupo:
+            nome_removido = grupo[cpf].nome
+            del grupo[cpf]
+            print(f"\n[ Sucesso ] O funcionário {nome_removido} foi removido do sistema!")
+            return
+    print(f"\n[ Erro ] Nenhum funcionário encontrado com o CPF {cpf}.")

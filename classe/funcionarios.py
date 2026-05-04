@@ -39,7 +39,7 @@ class Funcionarios:
         print(f"Nome: {self.nome} | CPF: {self.cpf} | Salário Final: R$ {self.calcular_salario():.2f}")
 
 
-class clt(Funcionarios):
+class Clt(Funcionarios):
     def __init__(self, nome, cpf, salario_base, bonus):
         super().__init__(nome, cpf, salario_base)
         self.__bonus = bonus
@@ -48,7 +48,7 @@ class clt(Funcionarios):
         return self.salario_base + self.__bonus
     
 
-class freelancer(Funcionarios):
+class Freelancer(Funcionarios):
     def __init__(self, nome, cpf, valor_por_projeto, quantidade_projeto):
         super().__init__(nome, cpf, 0)
         self.__valor_por_projeto = valor_por_projeto
@@ -58,7 +58,7 @@ class freelancer(Funcionarios):
         return self.__valor_por_projeto * self.__quantidade_projeto
     
 
-class estagiario(Funcionarios):
+class Estagiario(Funcionarios):
     def __init__(self, nome, cpf, bolsa, desconto):
         super().__init__(nome, cpf, bolsa)
         self.__desconto = desconto
