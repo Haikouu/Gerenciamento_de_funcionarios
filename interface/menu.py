@@ -32,22 +32,25 @@ def exibir_menu():
                 salario = float(input("Salário Base: R$ "))
                 bonus = float(input("Bônus: R$ "))
                 novo = clt(nome, cpf, salario, bonus)
-            
+                categoria = "CLT"
+
             elif tipo == "2":
                 valor_proj = float(input("Valor por Projeto: R$ "))
                 qtd_proj = int(input("Quantidade de Projetos: "))
                 novo = freelancer(nome, cpf, valor_proj, qtd_proj)
-            
+                categoria = "Freelancer"
+
             elif tipo == "3":
                 bolsa = float(input("Valor da Bolsa: R$ "))
                 desconto = float(input("Valor do Desconto: R$ "))
                 novo = estagiario(nome, cpf, bolsa, desconto)
-            
+                categoria = "Estagiário"
+
             else:
                 print("\n[!] Tipo inválido. Cadastro cancelado.")
-                continue 
+                continue
 
-            sistema.adicionar_funcionario(novo)
+            sistema.adicionar_funcionario(categoria, novo)
 
         elif opcao == "2":
             sistema.listar_funcionarios()
